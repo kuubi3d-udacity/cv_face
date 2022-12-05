@@ -1,11 +1,12 @@
 import glob
 import os
-import torch
-from torch.utils.data import Dataset, DataLoader
-import numpy as np
-import matplotlib.image as mpimg
-import pandas as pd
+
 import cv2
+import matplotlib.image as mpimg
+import numpy as np
+import pandas as pd
+import torch
+from torch.utils.data import DataLoader, Dataset
 
 
 class FacialKeypointsDataset(Dataset):
@@ -28,7 +29,7 @@ class FacialKeypointsDataset(Dataset):
 
     def __getitem__(self, idx):
         image_name = os.path.join(self.root_dir,
-                                self.key_pts_frame.iloc[idx, 0])
+                                self.key_pts_frame.iloc[idx, 0:])  
         
         image = mpimg.imread(image_name)
         
